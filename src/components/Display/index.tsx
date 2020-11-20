@@ -7,9 +7,16 @@ interface IDisplayProps {
   speed: number;
   intensity: number;
   rows: number;
+  displayStyle: boolean;
 }
 
-const Display: React.FC<IDisplayProps> = ({ isOn, speed, intensity, rows }) => {
+const Display: React.FC<IDisplayProps> = ({
+  isOn,
+  speed,
+  intensity,
+  rows,
+  displayStyle,
+}) => {
   const [timers, setTimer] = useState([]) as any;
   const [lightsArray, setLightsArray] = useState(() => {
     const lights = [];
@@ -18,13 +25,14 @@ const Display: React.FC<IDisplayProps> = ({ isOn, speed, intensity, rows }) => {
     }
     return lights;
   });
+  const [lightingFunction, setLightingFunction] = useState(0);
 
-  // Turn Lights On
-  const handleTurnOnLight = useCallback(
+  // Turn Lights ON in sequence
+  const handleTurnOnLight1 = useCallback(
     (i = 1): any => {
       const currentLight = document.querySelector(`#n${i}`) as any;
 
-      if (!currentLight) return handleTurnOnLight();
+      if (!currentLight) return handleTurnOnLight1();
 
       currentLight.style.opacity = intensity / 100;
       currentLight.style.boxShadow = '0 0 20px 5px';
@@ -32,13 +40,45 @@ const Display: React.FC<IDisplayProps> = ({ isOn, speed, intensity, rows }) => {
       const timer = setTimeout(() => {
         currentLight.style.opacity = 0.2;
         currentLight.style.boxShadow = '0 0 0 0';
-        handleTurnOnLight(i + 1);
+        handleTurnOnLight1(i + 1);
       }, speed);
 
       setTimer((old: number[]) => [...old, timer]);
     },
     [setTimer, speed, intensity],
   );
+
+  // Turn Lights ON in parallel
+  const handleTurnOnLight2 = useCallback(
+    (i = 1): any => {
+      for (let j = 1; j <= rows * 7; j++) {
+        const currentLight = document.querySelector(`#n${j}`) as any;
+        if (j % 2 === i && currentLight) {
+          currentLight.style.opacity = intensity / 100;
+          currentLight.style.boxShadow = '0 0 20px 5px';
+        }
+      }
+
+      const timer = setTimeout(() => {
+        for (let j = 1; j <= rows * 7; j++) {
+          const currentLight = document.querySelector(`#n${j}`) as any;
+          if (j % 2 === i && currentLight) {
+            currentLight.style.opacity = 0.2;
+            currentLight.style.boxShadow = '0 0 0 0';
+          }
+        }
+
+        if (i === 0) handleTurnOnLight2(1);
+        if (i === 1) handleTurnOnLight2(0);
+      }, speed);
+
+      setTimer((old: number[]) => [...old, timer]);
+    },
+    [intensity, rows, setTimer, speed],
+  );
+
+  // // Set Lighting Function
+  // const handleTurnOnLight = handleTurnOnLight2;
 
   // Turn Lights Off
   const handleTurnOffLights = useCallback(() => {
@@ -66,16 +106,24 @@ const Display: React.FC<IDisplayProps> = ({ isOn, speed, intensity, rows }) => {
   // Keep Track of Lights On
   useEffect(() => {
     if (isOn) {
-      handleTurnOnLight();
+      if (displayStyle) handleTurnOnLight1();
+      else handleTurnOnLight2();
     }
-  }, [isOn, handleTurnOnLight]);
+  }, [isOn, displayStyle, handleTurnOnLight1, handleTurnOnLight2]);
 
   // Keep Track of Speed Changes
   useEffect(() => {
     handleTurnOffLights();
     clearTimer();
-    handleTurnOnLight();
-  }, [speed, handleTurnOnLight, handleTurnOffLights]);
+    if (displayStyle) handleTurnOnLight1();
+    else handleTurnOnLight2();
+  }, [
+    speed,
+    displayStyle,
+    handleTurnOnLight1,
+    handleTurnOnLight2,
+    handleTurnOffLights,
+  ]);
 
   // Keep Track of Rows
   useEffect(() => {

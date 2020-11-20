@@ -8,6 +8,7 @@ import {
   IntensitySlider,
   SpeedSlider,
   PlayButton,
+  DisplayStyleButton,
 } from './styles';
 
 import LightController from './components/LightController';
@@ -19,6 +20,7 @@ interface IMainControllerProps {
   handleChangeSize: (e: any) => void;
   handleSpeedChange: (e: any) => void;
   handleIntensityChange: (e: any) => void;
+  handleDisplayStyleChange: () => void;
   handleSetIsOn: () => void;
   rows: number;
   intensity: number;
@@ -32,6 +34,7 @@ const MainController: React.FC<IMainControllerProps> = ({
   handleSetNumberOfRows,
   handleSpeedChange,
   handleSetIsOn,
+  handleDisplayStyleChange,
   rows,
   intensity,
   speed,
@@ -105,6 +108,7 @@ const MainController: React.FC<IMainControllerProps> = ({
           <div id="play-symbol" />
         </PlayButton>
       </LowerButtonsContainer>
+      <DisplayStyleButton onClick={handleDisplayStyleChange} />
     </Container>
   );
 };

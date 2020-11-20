@@ -5,6 +5,7 @@ export const Container = styled.div`
   padding: 15px;
   border-radius: 4px;
   margin: 25px;
+  position: relative;
 `;
 
 export const UpperButtonsContainer = styled.div`
@@ -86,4 +87,15 @@ export const IntensitySlider = styled.input`
     outline: none;
     box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
   }
+`;
+
+export const DisplayStyleButton = styled.button`
+  position: absolute;
+  height: 15px;
+  width: 10px;
+  border-radius: 50%;
+  outline: none;
+  cursor: pointer;
+  right: 5px;
+  bottom: 5px;
 `;

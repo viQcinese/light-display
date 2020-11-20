@@ -11,6 +11,7 @@ const App: React.FC = () => {
   const [speed, setSpeed] = useState(25);
   const [intensity, setIntensity] = useState(100);
   const [rows, setRows] = useState(2);
+  const [displayStyle, setDisplayStyle] = useState(true);
 
   const handleChangeLightColor = useCallback(e => {
     const lightNumber = e.target.parentElement.id.split('lc')[1];
@@ -71,6 +72,10 @@ const App: React.FC = () => {
     setIsOn(!isOn);
   }, [isOn]);
 
+  const handleDisplayStyleChange = useCallback(() => {
+    setDisplayStyle(!displayStyle);
+  }, [displayStyle]);
+
   return (
     <>
       <GlobalStyle />
@@ -82,6 +87,7 @@ const App: React.FC = () => {
           handleSetNumberOfRows={handleSetNumberOfRows}
           handleChangeSize={handleChangeSize}
           handleSetIsOn={handleSetIsOn}
+          handleDisplayStyleChange={handleDisplayStyleChange}
           intensity={intensity}
           rows={rows}
           speed={speed}
@@ -91,6 +97,7 @@ const App: React.FC = () => {
           speed={501 - speed * 10}
           intensity={intensity}
           rows={rows}
+          displayStyle={displayStyle}
         />
       </Content>
     </>
