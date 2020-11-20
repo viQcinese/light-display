@@ -1,5 +1,4 @@
-# Christmas Lights
-
+# Light Display
 **Tier:** 1-Beginner
 
 This application was built in response to a simple coding challenge proposed in [this repository](https://github.com/florinpop17/app-ideas/blob/master/Projects/1-Beginner/Christmas-Lights-App.md)
@@ -30,7 +29,7 @@ displayed during the Christmas Holidays.
 <p float="left">
 <img src="https://github.com/viQcinese/documentation/blob/master/light-display/light-display4.gif?raw=true" width="30%" height="30%"/>
 <img src="https://github.com/viQcinese/documentation/blob/master/light-display/light-display5.gif?raw=true" width="30%" height="30%"/>
-<img src="https://github.com/viQcinese/documentation/blob/master/light-display/light-display6.gif?raw=true" width="30%" height="30%"/> 
+<img src="https://github.com/viQcinese/documentation/blob/master/light-display/light-display6.gif?raw=true" width="30%" height="30%"/>
 </p>
 <img src="https://github.com/viQcinese/documentation/blob/master/light-display/light-display3.gif?raw=true" width="90%" height="90%"/>
 
