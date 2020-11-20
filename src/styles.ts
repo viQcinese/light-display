@@ -1,6 +1,12 @@
 import styled, { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyle = createGlobalStyle`
+$globe-width:   12px;
+$globe-height:  28px;
+$globe-spacing: 40px;
+$globe-spread: 3px;
+$light-off-opacity: 0.4;
+
   * {
     box-sizing: border-box;
   }

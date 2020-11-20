@@ -14,7 +14,7 @@ export const Light = styled.div`
   width: 30px;
   border-radius: 50%;
   background: red;
+  color: red;
   opacity: 0.2;
   margin: 5px;
-  /* animation: glow-1 1s infinite; */
 `;

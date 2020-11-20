@@ -20,16 +20,22 @@ const App: React.FC = () => {
 
     if (!light.style.background || light.style.background === 'red') {
       light.style.background = 'green';
+      light.style.color = 'green';
     } else if (light.style.background === 'green') {
       light.style.background = 'orange';
+      light.style.color = 'orange';
     } else if (light.style.background === 'orange') {
       light.style.background = 'blue';
+      light.style.color = 'blue';
     } else if (light.style.background === 'blue') {
       light.style.background = 'yellow';
+      light.style.color = 'yellow';
     } else if (light.style.background === 'yellow') {
       light.style.background = 'purple';
+      light.style.color = 'purple';
     } else if (light.style.background === 'purple') {
       light.style.background = 'red';
+      light.style.color = 'red';
     }
   }, []);
 

@@ -27,9 +27,11 @@ const Display: React.FC<IDisplayProps> = ({ isOn, speed, intensity, rows }) => {
       if (!currentLight) return handleTurnOnLight();
 
       currentLight.style.opacity = intensity / 100;
+      currentLight.style.boxShadow = '0 0 20px 5px';
 
       const timer = setTimeout(() => {
         currentLight.style.opacity = 0.2;
+        currentLight.style.boxShadow = '0 0 0 0';
         handleTurnOnLight(i + 1);
       }, speed);
 
