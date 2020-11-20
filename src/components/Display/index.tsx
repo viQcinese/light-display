@@ -77,9 +77,6 @@ const Display: React.FC<IDisplayProps> = ({
     [intensity, rows, setTimer, speed],
   );
 
-  // // Set Lighting Function
-  // const handleTurnOnLight = handleTurnOnLight2;
-
   // Turn Lights Off
   const handleTurnOffLights = useCallback(() => {
     for (let i = 1; i <= rows * 7; i++) {

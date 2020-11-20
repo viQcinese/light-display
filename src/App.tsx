@@ -1,6 +1,6 @@
 import React, { useCallback, useState } from 'react';
 
-import { GlobalStyle, Content } from './styles';
+import { GlobalStyle, Content, ControllerAndDisplay, Title } from './styles';
 
 import MainController from './components/MainController';
 
@@ -59,7 +59,7 @@ const App: React.FC = () => {
   }, []);
 
   const handleChangeSize = useCallback(e => {
-    const value = e.target.value / 50;
+    const value = 1 + e.target.value / 100;
     const lightNumber = e.target.parentElement.id.split('lc')[1];
     const light = document.querySelector(`#n${lightNumber}`) as any;
 
@@ -80,25 +80,28 @@ const App: React.FC = () => {
     <>
       <GlobalStyle />
       <Content>
-        <MainController
-          handleChangeLightColor={handleChangeLightColor}
-          handleSpeedChange={handleSpeedChange}
-          handleIntensityChange={handleIntensityChage}
-          handleSetNumberOfRows={handleSetNumberOfRows}
-          handleChangeSize={handleChangeSize}
-          handleSetIsOn={handleSetIsOn}
-          handleDisplayStyleChange={handleDisplayStyleChange}
-          intensity={intensity}
-          rows={rows}
-          speed={speed}
-        />
-        <Display
-          isOn={isOn}
-          speed={501 - speed * 10}
-          intensity={intensity}
-          rows={rows}
-          displayStyle={displayStyle}
-        />
+        <Title>Light Display</Title>
+        <ControllerAndDisplay>
+          <MainController
+            handleChangeLightColor={handleChangeLightColor}
+            handleSpeedChange={handleSpeedChange}
+            handleIntensityChange={handleIntensityChage}
+            handleSetNumberOfRows={handleSetNumberOfRows}
+            handleChangeSize={handleChangeSize}
+            handleSetIsOn={handleSetIsOn}
+            handleDisplayStyleChange={handleDisplayStyleChange}
+            intensity={intensity}
+            rows={rows}
+            speed={speed}
+          />
+          <Display
+            isOn={isOn}
+            speed={501 - speed * 10}
+            intensity={intensity}
+            rows={rows}
+            displayStyle={displayStyle}
+          />
+        </ControllerAndDisplay>
       </Content>
     </>
   );

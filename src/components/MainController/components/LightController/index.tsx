@@ -16,7 +16,13 @@ const LightController: React.FC<ILightController> = ({
   return (
     <Container id={id}>
       <Button onClick={onClick} />
-      <Slider type="range" min={25} max={100} onChange={onSlide} />
+      <Slider
+        type="range"
+        min={1}
+        max={75}
+        defaultValue={1}
+        onChange={onSlide}
+      />
     </Container>
   );
 };
