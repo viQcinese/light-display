@@ -1,5 +1,4 @@
 # Light Display
-**Tier:** 1-Beginner
 
 This application was built in response to a simple coding challenge proposed in [this repository](https://github.com/florinpop17/app-ideas/blob/master/Projects/1-Beginner/Christmas-Lights-App.md)
 
